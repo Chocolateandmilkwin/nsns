@@ -5,6 +5,28 @@ edition = "2021"
 
 [dependencies]
 actix-web = "4.3.1"
+cfg-if = "1.0.0"
+lazy_static = "1.4.0"
+leptos = "0.5.1"
+leptos_actix = "0.5.1"
+leptos_meta = "0.5.1"
+leptos_router = "0.5.1"
+serde = "1.0.189"
 shuttle-actix-web = "0.29.0"
 shuttle-runtime = "0.29.0"
+thiserror = "1.0.50"
 tokio = "1.26.0"
+
+[features]
+hydrate = ["leptos/hydrate", "leptos_meta/hydrate", "leptos_router/hydrate"]
+ssr = [
+    "dep:actix-files",
+    "dep:actix-web",
+    "dep:leptos_actix",
+    "leptos/ssr",
+    "leptos_meta/ssr",
+    "leptos_router/ssr",
+]
+
+[package.metadata.leptos]
+bin-features = ["ssr"]
